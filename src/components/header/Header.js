@@ -22,7 +22,7 @@ const Header = (props) => {
 						<ul>
 							<li>
 								<span onClick={() => auth.signOut()}>
-									Log Out
+									LOGOUT
 								</span>
 							</li>
 						</ul>

@@ -57,9 +57,11 @@ class App extends Component {
 						</HomepageLayout>
 					</Route>
 					<Route exact path="/register">
+						{currentUser ? <Redirect to="/" /> : (
 						<MainLayouts currentUser={currentUser}>
 							<Register />
 						</MainLayouts>
+						)}
 					</Route>
 					<Route exact path="/login">
 						{currentUser ? <Redirect to='/' /> : (
