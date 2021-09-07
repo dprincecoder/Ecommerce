@@ -2,7 +2,12 @@ import React from 'react'
 import './header.scss'
 import logo from './dpLogo1.png'
 import { Link } from 'react-router-dom'
-const index = (props) => {
+import { auth } from '../../firebase'
+
+const Header = (props) => {
+
+	const { currentUser } = props
+	
     return (
 			<header className="header">
 				<div className="wrap">
@@ -12,19 +17,35 @@ const index = (props) => {
 						</Link>
 					</div>
 
-					<div className="callToActions">
+				<div className="callToActions">
+					{currentUser ? (
 						<ul>
 							<li>
-								<Link to="/register"> Register</Link>
-							</li>
-							<li>
-								<Link to="/login"> Login</Link>
+								<span onClick={() => auth.signOut()}>
+									Log Out
+								</span>
 							</li>
 						</ul>
+					) : (
+							
+							<ul>
+								<li>
+									<Link to="/register"> Register</Link>
+								</li>
+								<li>
+									<Link to="/login"> Login</Link>
+								</li>
+							</ul>
+					)
+				}
 					</div>
 				</div>
 			</header>
 		);
 }
 
-export default index
+Header.defaultProps = {
+	currentUser: null
+}
+
+export default Header

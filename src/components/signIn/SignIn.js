@@ -1,8 +1,7 @@
 import React from 'react'
+import { auth, provider, signInWithGoogle } from "../../firebase";
 import Button from '../forms/button/Button'
 import './signIn.scss'
-import { signInWithGoogle } from '../../firebase'
-
 
 
 const SignIn = () => {
@@ -10,6 +9,8 @@ const SignIn = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
     }
+
+ 
     return (
         <div className="signIn">
             <div className="wrap">

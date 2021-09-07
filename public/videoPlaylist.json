@@ -1,0 +1,36 @@
+{
+    "vplaylist": [
+        {
+            "id": 1,
+            "videoUrl": "https://res.cloudinary.com/dhjmkhdkg/video/upload/v1616636028/videocast/gary_qgreoi.mp4",
+            "bumperUrl": "https://res.cloudinary.com/dhjmkhdkg/image/upload/v1626038717/videobumper3_i1k1g6.png",
+            "artistName": "Gary Dalton",
+            "songName": "Garys Cool Song",
+            "channelLink": "https://www.thestation.tv",
+            "socialTag": "@garydalton",
+            "qrcodeImage": "https://res.cloudinary.com/dhjmkhdkg/image/upload/v1623733950/qr-garydalton_nimdjn.jpg"
+        },
+        
+        {
+					"id": 2,
+					"videoUrl": "https://res.cloudinary.com/dhjmkhdkg/video/upload/v1625026057/videocast/Waiting_Til_Dawn_Official_Video_PLEASE_SUBSCRIBE_bnwgev.mp4",
+					"bumperUrl": "https://res.cloudinary.com/dhjmkhdkg/image/upload/v1626038717/videobumper2_js6q8i.png",
+					"artistName": "Something Blue",
+					"songName": "Blue Song",
+					"channelLink": "https://www.thestation.tv",
+					"socialTag": "@myblue",
+					"qrcodeImage": "https://res.cloudinary.com/dhjmkhdkg/image/upload/v1623733950/qr-garydalton_nimdjn.jpg"
+				},
+    
+        {
+					"id": 3,
+					"videoUrl": "https://res.cloudinary.com/dhjmkhdkg/video/upload/v1625027420/videocast/Pexels_Videos_4551_ypceyf.mp4",
+					"bumperUrl": "https://res.cloudinary.com/dhjmkhdkg/image/upload/v1626038717/videobumper1_fal5c0.png",
+					"artistName": "Something Yellow",
+					"songName": "Yellow Song",
+					"channelLink": "https://www.thestation.tv",
+					"socialTag": "@mycrypto",
+					"qrcodeImage": "https://res.cloudinary.com/dhjmkhdkg/image/upload/v1623733950/qr-garydalton_nimdjn.jpg"
+				}
+    ]
+}
