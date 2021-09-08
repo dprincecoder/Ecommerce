@@ -9,6 +9,7 @@ import Homepage from "./pages/homepage/Homepage";
 import Login from "./pages/login/Login";
 import Register from "./pages/registration/Register";
 import { auth, handleUserProfile } from "./firebase";
+import Recovery from "./pages/recovery/Recovery";
 
 //let initial state be null
 const initialState = {
@@ -69,6 +70,11 @@ class App extends Component {
 							<Login />
 						</MainLayouts>
 						)}
+					</Route>
+					<Route exact path="/recovery">
+						<MainLayouts>
+						<Recovery />
+						</MainLayouts>
 					</Route>
 				</Switch>
 			</div>

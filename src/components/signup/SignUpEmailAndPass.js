@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { auth, handleUserProfile } from "../../firebase";
+import AuthWrapper from "../authWrapper/AuthWrapper";
 import Button from "../forms/button/Button";
 import FormInput from "../forms/formInput/FormInput";
 import "./SignUpEmailAndPass.scss";
@@ -30,32 +31,36 @@ export class SignUpEmailAndPass extends Component {
 
 	handleSubmit = async (e) => {
 		e.preventDefault();
-		const {displayName, email, password, confirmPassword, error } = this.state;
+		const { displayName, email, password, confirmPassword, error } = this.state;
 		if (password !== confirmPassword) {
 			const newError = ["Password don't match. Please try again."];
 			this.setState({
 				error: newError,
 			});
 			return;
-        }
-        
-        try {
-            const { user } = await auth.createUserWithEmailAndPassword(email, password);
-            await handleUserProfile(user, { displayName });
+		}
 
-            this.setState({...initialState})
-        } catch (error) {
-            console.log(error);
-        }
+		try {
+			const { user } = await auth.createUserWithEmailAndPassword(
+				email,
+				password
+			);
+			await handleUserProfile(user, { displayName });
+
+			this.setState({ ...initialState });
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	render() {
+		const configAuthWraper = {
+			headline: "SignUp",
+		};
 		const { displayName, email, password, confirmPassword, error } = this.state;
 		return (
-			<div className="signUpEmailAndPass">
-				<div className="wrap">
-					<h2>Sign Up</h2>
-
+			<AuthWrapper {...configAuthWraper}>
+				<div className="formWrap">
 					{error.length > 0 && (
 						<ul>
 							{error.map((err, index) => (
@@ -100,7 +105,7 @@ export class SignUpEmailAndPass extends Component {
 						<Button type="submit">Register</Button>
 					</form>
 				</div>
-			</div>
+			</AuthWrapper>
 		);
 	}
 }
