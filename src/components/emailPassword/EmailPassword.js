@@ -54,7 +54,7 @@ const EmailPassword = (props) => {
 						value={email}
 						naem="email"
 						placeholder="Enter registered Email"
-						onChange={(e) => setEmail(e.target.value)}
+						handleChange={(e) => setEmail(e.target.value)}
 					/>
 
 					<Button type="submit">Recover</Button>
