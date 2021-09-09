@@ -31,7 +31,7 @@ export class SignUpEmailAndPass extends Component {
 
 	handleSubmit = async (e) => {
 		e.preventDefault();
-		const { displayName, email, password, confirmPassword, error } = this.state;
+		const { displayName, email, password, confirmPassword} = this.state;
 		if (password !== confirmPassword) {
 			const newError = ["Password don't match. Please try again."];
 			this.setState({

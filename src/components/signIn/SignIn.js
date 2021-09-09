@@ -15,8 +15,8 @@ const SignIn = () => {
         
         try {
             await auth.signInWithEmailAndPassword(email, password);
-            setEmail(" ");
-            setPassword(" ");
+            setEmail("");
+            setPassword("");
         } catch (error) {
             console.log(error);
         }
@@ -44,13 +44,13 @@ const SignIn = () => {
 						name="password"
 						onChange={(e) => setPassword(e.target.value)}
 					/>
-					<Button>Login</Button>
+					<Button type="submit">Login</Button>
+				</form>
 					<div className="socialSign">
 						<div className="row">
 							<Button onClick={signInWithGoogle}>Sign In with Google</Button>
 						</div>
 					</div>
-				</form>
 				<Link to="/recovery">Forgotten Password ?</Link>
 			</div>
 		</AuthWrapper>
