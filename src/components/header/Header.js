@@ -18,17 +18,17 @@ const Header = (props) => {
 						</Link>
 					</div>
 
-				<div className="callToActions">
-					{currentUser ? (
-						<ul>
-							<li>
-								<span onClick={() => auth.signOut()}>
-									LOGOUT
-								</span>
-							</li>
-						</ul>
-					) : (
-							
+					<div className="callToActions">
+						{currentUser ? (
+							<ul>
+								<li>
+									<Link to="/dashboard"> Dashboard</Link>
+								</li>
+								<li>
+									<span onClick={() => auth.signOut()}>LOGOUT</span>
+								</li>
+							</ul>
+						) : (
 							<ul>
 								<li>
 									<Link to="/register"> Register</Link>
@@ -37,8 +37,7 @@ const Header = (props) => {
 									<Link to="/login"> Login</Link>
 								</li>
 							</ul>
-					)
-				}
+						)}
 					</div>
 				</div>
 			</header>
