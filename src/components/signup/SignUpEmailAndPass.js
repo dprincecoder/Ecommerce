@@ -1,20 +1,40 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { auth, handleUserProfile } from "../../firebase";
+import { signUpEmailAndPass, resetAllAuthForms } from "../../redux/User/user.actions";
 import AuthWrapper from "../authWrapper/AuthWrapper";
 import Button from "../forms/button/Button";
 import FormInput from "../forms/formInput/FormInput";
 import "./SignUpEmailAndPass.scss";
 
+const mapState = ({ user }) => ({
+	signUpSuccess: user.signUpSuccess,
+	signUpError: user.signUpError
+})
 
 const SignUpEmailAndPass = (props) => {
 	//divine initialState
+	const dispatch = useDispatch();
+	const {signUpError, signUpSuccess} = useSelector(mapState)
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("password");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
 	const [displayName, setDisplayName] = useState("");
 
+	useEffect(() => {
+		if (signUpSuccess) {
+			reset();
+			dispatch(resetAllAuthForms())
+			props.history.push('/')
+		}
+	}, [signUpSuccess]);
+
+	useEffect(() => {
+		if (Array.isArray(signUpError) && signUpError.length > 0) {
+			setErrors(signUpError);
+		}
+	}, [signUpError])
 
 	//reset form input
 	const reset = () => {
@@ -26,23 +46,8 @@ const SignUpEmailAndPass = (props) => {
 	};
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (password !== confirmPassword) {
-			const newError = ["Password don't match. Please try again."];
-			setErrors(newError);
-			return;
-		}
 
-		try {
-			const { user } = await auth.createUserWithEmailAndPassword(
-				email,
-				password
-			);
-			await handleUserProfile(user, { displayName });
-			reset();
-			props.history.push("/");
-		} catch (error) {
-			console.log(error);
-		}
+		dispatch(signUpEmailAndPass({email, password, displayName, confirmPassword}))
 	};
 
 	const configAuthWraper = {

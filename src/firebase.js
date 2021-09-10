@@ -18,7 +18,6 @@ const DB = firebaseApp.firestore();   //create a database from firebase firestor
 const auth = firebase.auth();   //authorize users using firebase auth
 
 const provider = new firebase.auth.GoogleAuthProvider();  //let google be our firebase authorization
-const signInWithGoogle = () => auth.signInWithPopup(provider);
 const storage = firebase.storage();
 
 //handle users information in DB
@@ -47,7 +46,7 @@ const handleUserProfile = async (userAuth, additionalData) => {
 
 
 //exports our modules
-export { auth, signInWithGoogle, DB, storage, handleUserProfile };
+export { auth, provider, DB, storage, handleUserProfile };
 
 
 

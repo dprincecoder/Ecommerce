@@ -10,7 +10,7 @@ import Login from "./pages/login/Login";
 import Register from "./pages/registration/Register";
 import { auth, handleUserProfile } from "./firebase";
 import Recovery from "./pages/recovery/Recovery";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setCurrentUser } from "./redux/User/user.actions";
 import Dashboard from "./pages/dashboard/Dashboard";
 import WithAuth from "./higherOtherComponent/withAuth";
@@ -19,7 +19,7 @@ import WithAuth from "./higherOtherComponent/withAuth";
 const App =(props) => {
 
 	//distructure setCurrentUser action from props
-	const { setCurrentUser, currentUser } = props;
+	const dispatch = useDispatch();
 	
 	useEffect(() => {
 		//listen for a change in user
@@ -27,14 +27,14 @@ const App =(props) => {
 			if (userAuth) {
 				const userRef = await handleUserProfile(userAuth);
 				userRef.onSnapshot(snapshot => {
-					setCurrentUser({
+					dispatch(setCurrentUser({
 						id: snapshot.id,
 						...snapshot.data()
-					})
+					}))
 				})
 			}
 			
-			setCurrentUser(userAuth)
+			dispatch(setCurrentUser(userAuth))
 		})
 		 return () => {authListener()};
 	}, [])
@@ -48,22 +48,14 @@ const App =(props) => {
 						</HomepageLayout>
 					</Route>
 					<Route exact path="/register">
-						{currentUser ? (
-							<Redirect to="/" />
-						) : (
 							<MainLayouts>
 								<Register />
 							</MainLayouts>
-						)}
 					</Route>
 					<Route exact path="/login">
-						{currentUser ? (
-							<Redirect to="/" />
-						) : (
 							<MainLayouts>
 								<Login />
 							</MainLayouts>
-						)}
 					</Route>
 					<Route exact path="/recovery">
 						<MainLayouts>
@@ -83,12 +75,4 @@ const App =(props) => {
 	}
 
 
-const mapStateToProps = ({ user }) => ({
-	currentUser: user.currentUser
-});
-
-const mapDispatchToProps = dispatch => ({
-	setCurrentUser: user => dispatch(setCurrentUser(user))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
