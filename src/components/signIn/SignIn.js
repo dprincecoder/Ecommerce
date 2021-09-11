@@ -1,36 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
-import { resetAllAuthForms, signInUser, signInWithGoogle, } from "../../redux/User/user.actions";
+import { emailSignInStart, googleSignInStart } from "../../redux/User/user.actions";
 import AuthWrapper from "../authWrapper/AuthWrapper";
 import Button from "../forms/button/Button";
 import FormInput from "../forms/formInput/FormInput";
 import "./signIn.scss";
 
 const mapState = ({ user }) => ({
-	signInSuccess: user.signInSuccess,
-	signInError: user.signInError,
+	currentUser: user.currentUser,
+	userError: user.userError,
 });
 const SignIn = (props) => {
 	const dispatch = useDispatch();
-	const { signInSuccess, signInError } = useSelector(mapState);
+	const { currentUser, userError } = useSelector(mapState);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [errors, setErrors] = useState([]);
 
 	useEffect(() => {
-		if (signInSuccess) {
+		if (currentUser) {
 			reset();
-			dispatch(resetAllAuthForms())
 			props.history.push("/");
 		}
-	}, [signInSuccess]);
+	}, [currentUser]);
 
 	useEffect(() => {
-		if (Array.isArray(signInError) && signInError.length > 0) {
-			setErrors(signInError);
+		if (Array.isArray(userError) && userError.length > 0) {
+			setErrors(userError);
 		}
-	}, [signInError]);
+	}, [userError]);
 
 	//reset form input
 	const reset = () => {
@@ -41,24 +40,10 @@ const SignIn = (props) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		dispatch(signInUser({email, password}));
-
-		// try {
-		// 	await auth
-		// 		.signInWithEmailAndPassword(email, password)
-		// 		.then(() => {
-		// 			// reset();
-		// 			// props.history.push("/");
-		// 		})
-		// 		.catch((err) => {
-		// 			setErrors([err.message]);
-		// 		});
-		// } catch (error) {
-		// 	console.log(error);
-		// }
+		dispatch(emailSignInStart({email, password}));
 	};
 	const loginWithGoogle = () => {
-		dispatch(signInWithGoogle())
+		dispatch(googleSignInStart())
 	}
 
 	const configAuthWraper = {

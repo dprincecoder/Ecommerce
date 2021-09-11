@@ -21,7 +21,7 @@ const provider = new firebase.auth.GoogleAuthProvider();  //let google be our fi
 const storage = firebase.storage();
 
 //handle users information in DB
-const handleUserProfile = async (userAuth, additionalData) => {
+const handleUserProfile = async ({userAuth, additionalData}) => {
 	if (!userAuth) return;
 
 	const { uid } = userAuth;
@@ -44,10 +44,15 @@ const handleUserProfile = async (userAuth, additionalData) => {
 	return userRef;
 }
 
+const getCurrentUser = () => {
+	return new Promise((resolve, reject) => {
+		const unsubscribe = auth.onAuthStateChanged(userAuth => {
+			unsubscribe();
+			resolve(userAuth)
+		}, reject)
+	})
+}
+
 
 //exports our modules
-export { auth, provider, DB, storage, handleUserProfile };
-
-
-
-
+export { auth, provider, DB, storage, handleUserProfile, getCurrentUser };
