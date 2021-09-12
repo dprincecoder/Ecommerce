@@ -13,11 +13,12 @@ import { useDispatch } from "react-redux";
 import { checkUserSession } from "./redux/User/user.actions";
 import Dashboard from "./pages/dashboard/Dashboard";
 import WithAuth from "./higherOtherComponent/withAuth";
+import Admin from "./pages/admin/Admin";
+import WithAdminAuth from "./higherOtherComponent/withAdminAuth";
+import AdminToolBar from "./components/adminToolBar/AdminToolBar";
 
 
 const App = (props) => {
-
-	//distructure setCurrentUser action from props
 	const dispatch = useDispatch();
 	
 	useEffect(() => {
@@ -26,6 +27,7 @@ const App = (props) => {
 
 		return (
 			<div className="App">
+				<AdminToolBar />
 				<Switch>
 					<Route exact path="/">
 						<HomepageLayout>
@@ -33,14 +35,14 @@ const App = (props) => {
 						</HomepageLayout>
 					</Route>
 					<Route exact path="/register">
-							<MainLayouts>
-								<Register />
-							</MainLayouts>
+						<MainLayouts>
+							<Register />
+						</MainLayouts>
 					</Route>
 					<Route exact path="/login">
-							<MainLayouts>
-								<Login />
-							</MainLayouts>
+						<MainLayouts>
+							<Login />
+						</MainLayouts>
 					</Route>
 					<Route exact path="/recovery">
 						<MainLayouts>
@@ -49,15 +51,21 @@ const App = (props) => {
 					</Route>
 					<Route exact path="/dashboard">
 						<WithAuth>
-						<MainLayouts>
-							<Dashboard />
-						</MainLayouts>
+							<MainLayouts>
+								<Dashboard />
+							</MainLayouts>
 						</WithAuth>
+					</Route>
+					<Route exact path="/admin">
+						<WithAdminAuth>
+						<MainLayouts>
+							<Admin />
+						</MainLayouts>
+						</WithAdminAuth>
 					</Route>
 				</Switch>
 			</div>
 		);
 	}
-
 
 export default App;

@@ -1,2 +1,3 @@
-import userAuth from './useAuth'
-export { userAuth }
+import userAuth from './useAuth';
+import useAdminAuth from './useAdminAuth'
+export { userAuth, useAdminAuth }

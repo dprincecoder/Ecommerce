@@ -1,5 +1,5 @@
 import * as firebase from 'firebase';
-
+import dummyImg from './dummyAvatar.png'
 
 const firebaseConfig = {
 	apiKey: "AIzaSyCxL6rbVtu7gt3bcSI1xQeRnkaEOho2ZWY",
@@ -33,9 +33,11 @@ const handleUserProfile = async ({userAuth, additionalData}) => {
 	if (!snapshot.exists) {
 		const { displayName, email, photoURL, } = userAuth;
 		const timestamp = new Date();
+		const userRoles = ['user'];
+		const profilePic = !photoURL ? dummyImg : photoURL
 		try {
 			await userRef.set({
-				displayName, email, createdDate: timestamp, photoURL, ...additionalData
+				displayName, email, createdDate: timestamp, profilePic, userRoles, ...additionalData
 			})
 		} catch (error) {
 			console.log(error);
