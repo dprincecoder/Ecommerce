@@ -45,7 +45,6 @@ const SignUpEmailAndPass = (props) => {
 	};
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-
 		dispatch(signUpUserStart({email, password, displayName, confirmPassword}))
 	};
 

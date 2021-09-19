@@ -23,7 +23,8 @@ export function* getSnapshotFromUserAuth(user, additionalData = {}) {
 
 export function* emailSignIn({ payload: { email, password } }) {
 	try {
-		const { user } = yield auth.signInWithEmailAndPassword(email, password);
+        const { user } = yield auth.signInWithEmailAndPassword(email, password);
+        yield localStorage.setItem("currentUser", JSON.stringify(user));
 		yield getSnapshotFromUserAuth(user);
 	} catch (error) {
 		console.log(error);
@@ -52,6 +53,7 @@ export function* signOutUser() {
     try {
         yield auth.signOut();
         yield put(signOutUserSuccess())
+        yield localStorage.setItem("currentUser", JSON.stringify(null));
     } catch (error) {
         console.log(error);
     }
@@ -71,6 +73,7 @@ export function* signUpUser({payload: { email, password, displayName, confirmPas
 
 	try {
         const { user } = yield auth.createUserWithEmailAndPassword(email, password);
+        yield localStorage.setItem("user", user);
         const additionalData = { displayName }
         yield getSnapshotFromUserAuth(user, additionalData)
         // yield (handleUserProfile, { userAuth: user, additionalData: { displayName } });
@@ -100,6 +103,7 @@ export function* onResetPasswordStart() {
 export function* googleSignIn() {
 	try {
         const { user } = yield auth.signInWithPopup(provider);
+        yield localStorage.setItem("currentUser", JSON.stringify(user));
         yield getSnapshotFromUserAuth(user);
 	} catch (error) {
 		console.log(error);

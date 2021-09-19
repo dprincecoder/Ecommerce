@@ -2,7 +2,7 @@ import userTypes from "./user.types";
 
 //let initial state of user be null
 const INITIAL_STATE = {
-	currentUser: null,
+	currentUser: JSON.parse(localStorage.getItem("currentUser")) ||  null,
 	userError: [],
 	resetPasswordSuccess: false
 };

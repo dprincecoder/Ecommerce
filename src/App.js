@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { Switch, Route} from "react-router-dom";
 import "./default.scss";
 import MainLayouts from "./layouts/MainLayouts";
+import AdminLayouts from "./layouts/AdminLayouts"
+import DashboardLayout from "./layouts/DashboardLayout"
 import HomepageLayout from "./layouts/HomepageLayout";
 
 //pages
@@ -16,6 +18,7 @@ import WithAuth from "./higherOtherComponent/withAuth";
 import Admin from "./pages/admin/Admin";
 import WithAdminAuth from "./higherOtherComponent/withAdminAuth";
 import AdminToolBar from "./components/adminToolBar/AdminToolBar";
+import Search from "./pages/search/Search";
 
 
 const App = (props) => {
@@ -34,6 +37,16 @@ const App = (props) => {
 							<Homepage />
 						</HomepageLayout>
 					</Route>
+					<Route exact path="/search">
+						<MainLayouts>
+							<Search />
+						</MainLayouts>
+					</Route>
+					<Route exact path="/search/:filterType">
+						<MainLayouts>
+							<Search />
+						</MainLayouts>
+					</Route>
 					<Route exact path="/register">
 						<MainLayouts>
 							<Register />
@@ -51,16 +64,16 @@ const App = (props) => {
 					</Route>
 					<Route exact path="/dashboard">
 						<WithAuth>
-							<MainLayouts>
+							<DashboardLayout>
 								<Dashboard />
-							</MainLayouts>
+							</DashboardLayout>
 						</WithAuth>
 					</Route>
 					<Route exact path="/admin">
 						<WithAdminAuth>
-						<MainLayouts>
-							<Admin />
-						</MainLayouts>
+							<AdminLayouts>
+								<Admin />
+							</AdminLayouts>
 						</WithAdminAuth>
 					</Route>
 				</Switch>
