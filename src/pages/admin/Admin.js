@@ -9,7 +9,7 @@ import FormInput from "./../../components/forms/formInput/FormInput";
 import FormSelect from "./../../components/forms/formSelect/FormSelect";
 import Button from "./../../components/forms/button/Button";
 import LoadMore from "./../../components/loadMore/LoadMore";
-// import CKEditor from "ckeditor4-react";
+import {CKEditor} from "ckeditor4-react";
 import "./admin.scss";
 import Modal from "../../components/modal/Modal";
 
@@ -132,9 +132,9 @@ const Admin = () => {
 							handleChange={(e) => setProductPrice(e.target.value)}
 						/>
 
-						{/* <CKEditor
+						<CKEditor
 							onChange={(evt) => setProductDesc(evt.editor.getData())}
-						/> */}
+						/>
 
 						<br />
 

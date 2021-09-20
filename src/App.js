@@ -19,6 +19,7 @@ import Admin from "./pages/admin/Admin";
 import WithAdminAuth from "./higherOtherComponent/withAdminAuth";
 import AdminToolBar from "./components/adminToolBar/AdminToolBar";
 import Search from "./pages/search/Search";
+import ProductDetails from "./pages/productDetails/ProductDetails";
 
 
 const App = (props) => {
@@ -45,6 +46,11 @@ const App = (props) => {
 					<Route exact path="/search/:filterType">
 						<MainLayouts>
 							<Search />
+						</MainLayouts>
+					</Route>
+					<Route exact path="/product/:productID">
+						<MainLayouts>
+							<ProductDetails />
 						</MainLayouts>
 					</Route>
 					<Route exact path="/register">
