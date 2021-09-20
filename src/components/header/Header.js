@@ -44,7 +44,7 @@ const Header = (props) => {
 				<div className="callToActions">
 					<ul>
 						<li>
-							<Link to="cart">Your cart ({totalNumOfCartItems})</Link>
+							<Link to="/cart">Your cart ({totalNumOfCartItems})</Link>
 						</li>
 						{currentUser
 							? [

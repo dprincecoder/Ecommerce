@@ -103,7 +103,15 @@ const Checkout = () => {
 							</tbody>
 						</table>
 					) : (
-						<p>You currently dont have a item to your cart, please continue shopping.</p>
+						<div className="">
+							<p>
+								You currently dont have a item to your cart, please continue
+								shopping.
+							</p>
+							<Button onClick={() => history.push("/search")}>
+								Lets Go Shopping
+							</Button>
+						</div>
 					)}
 				</div>
 			</div>
