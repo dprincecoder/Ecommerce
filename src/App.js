@@ -20,6 +20,7 @@ import WithAdminAuth from "./higherOtherComponent/withAdminAuth";
 import AdminToolBar from "./components/adminToolBar/AdminToolBar";
 import Search from "./pages/search/Search";
 import ProductDetails from "./pages/productDetails/ProductDetails";
+import Cart from "./pages/cart/Cart";
 
 
 const App = (props) => {
@@ -51,6 +52,11 @@ const App = (props) => {
 					<Route exact path="/product/:productID">
 						<MainLayouts>
 							<ProductDetails />
+						</MainLayouts>
+					</Route>
+					<Route exact path="/cart">
+						<MainLayouts>
+							<Cart />
 						</MainLayouts>
 					</Route>
 					<Route exact path="/register">

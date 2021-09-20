@@ -2,13 +2,12 @@ import React from "react";
 import "./product.scss";
 import Button from "../../forms/button/Button";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../../redux/cart/cart.action";
 
-const Product = ({
-	documentID,
-	productThumbnail,
-	productName,
-	productPrice,
-}) => {
+const Product = (product) => {
+	const dispatch = useDispatch();
+	const { documentID, productThumbnail, productName, productPrice} = product;
 	// handle no product value error
 	if (
 		!documentID ||
@@ -21,6 +20,11 @@ const Product = ({
 	const configAddToCartBtn = {
 		type: "button",
 	};
+	
+	const handleAddToCart = (product) => {
+		if (!product) return;
+		dispatch(addProduct(product));
+	}
 	return (
 		<div className="product">
 			<div className="thumb">
@@ -40,7 +44,7 @@ const Product = ({
 						<Link to={`/product/${documentID}`}>{productPrice}</Link>
 					</li>
 					<div className="addToCart">
-						<Button {...configAddToCartBtn}>Add to cart</Button>
+						<Button {...configAddToCartBtn} onClick={() => handleAddToCart(product)}>Add to cart</Button>
 					</div>
 				</ul>
 			</div>

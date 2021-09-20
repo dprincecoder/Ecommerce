@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { addProduct } from "../../redux/cart/cart.action";
 import { fetchProductStart, setProduct } from "../../redux/products/products.actions";
 import Button from "../forms/button/Button"
 import "./productCard.scss";
@@ -23,6 +24,11 @@ const ProductCard = () => {
 const configAddToCartBtn = {
     type: "button"
 }
+
+const handleAddToCart = product => {
+	if (!product) return;
+	dispatch(addProduct(product))
+}
 	return (
 		<div className="productCard">
 			<div className="hero">
@@ -38,7 +44,7 @@ const configAddToCartBtn = {
                 <li>
                 
                 <div className="addToCart">
-                    <Button {...configAddToCartBtn}>Add to Cart</Button>
+                    <Button {...configAddToCartBtn} onClick={() => handleAddToCart(product)}>Add to Cart</Button>
                 </div>
                 </li>
                 <li>

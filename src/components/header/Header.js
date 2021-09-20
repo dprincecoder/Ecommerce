@@ -1,73 +1,77 @@
-import React from 'react'
-import './header.scss'
-import logo from './dpLogo1.png'
-import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { signOutUserStart } from '../../redux/User/user.actions'
+import React from "react";
+import "./header.scss";
+import logo from "./dpLogo1.png";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { signOutUserStart } from "../../redux/User/user.actions";
+import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
 
 //retrun currentUser object from state passed in userReducer
-const mapState = ({ user }) => ({
-	currentUser: user.currentUser
-})
+const mapState = (state) => ({
+	currentUser: state.user.currentUser,
+	totalNumOfCartItems: selectCartItemsCount(state),
+});
 
 const Header = (props) => {
 	const dispatch = useDispatch();
 
-	const { currentUser } = useSelector(mapState);
+	const { currentUser, totalNumOfCartItems } = useSelector(mapState);
 
 	const signOut = () => {
-		dispatch(signOutUserStart())
-	}
-	
-    return (
-			<header className="header">
-				<div className="wrap">
-					<div className="logo">
-						<Link to="/">
-							<img src={logo} alt="dprincecoder logo" />
-						</Link>
-					</div>
+		dispatch(signOutUserStart());
+	};
 
-					<nav>
-						<ul>
-							<li>
-								<Link to="/search"> Search</Link>
-							</li>
-							<li>
-								<Link to="/"> Home</Link>
-							</li>
-						</ul>
-					</nav>
-
-					<div className="callToActions">
-						{currentUser ? (
-							<ul>
-								<li>
-									<Link to="/dashboard"> Dashboard</Link>
-								</li>
-								<li>
-									<span onClick={() => signOut()}>LOGOUT</span>
-								</li>
-							</ul>
-						) : (
-							<ul>
-								<li>
-									<Link to="/register"> Register</Link>
-								</li>
-								<li>
-									<Link to="/login"> Login</Link>
-								</li>
-							</ul>
-						)}
-					</div>
+	return (
+		<header className="header">
+			<div className="wrap">
+				<div className="logo">
+					<Link to="/">
+						<img src={logo} alt="dprincecoder logo" />
+					</Link>
 				</div>
-			</header>
-		);
-}
+
+				<nav>
+					<ul>
+						<li>
+							<Link to="/search"> Search</Link>
+						</li>
+						<li>
+							<Link to="/"> Home</Link>
+						</li>
+					</ul>
+				</nav>
+
+				<div className="callToActions">
+					<ul>
+						<li>
+							<Link to="cart">Your cart ({totalNumOfCartItems})</Link>
+						</li>
+						{currentUser
+							? [
+									<li key="0">
+										<Link to="/dashboard"> Dashboard</Link>
+									</li>,
+									<li key="1">
+										<span onClick={() => signOut()}>LOGOUT</span>
+									</li>,
+							  ]
+							: [
+									<li key="0">
+										<Link to="/register"> Register</Link>
+									</li>,
+									<li key="1">
+										<Link to="/login"> Login</Link>
+									</li>,
+							  ]}
+					</ul>
+				</div>
+			</div>
+		</header>
+	);
+};
 
 Header.defaultProps = {
-	currentUser: null
-}
-
+	currentUser: null,
+};
 
 export default Header;
