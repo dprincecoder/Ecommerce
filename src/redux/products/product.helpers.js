@@ -16,23 +16,32 @@ export const handleAddProduct = (product) => {
 };
 
 //helper function to fetch products from database
-export const handleFetchProducts = ({filterType}) => {
+export const handleFetchProducts = ({filterType, startAfterDoc, persistProducts=[]}) => {
 	return new Promise((resolve, reject) => {
-	let ref = DB.collection("products").orderBy("createdDate");
+		
+	const pageSize = 3
+	let ref = DB.collection("products").orderBy("createdDate").limit(pageSize);
 	
 	if(filterType) {
 		ref = ref.where("productCategory", "==", filterType);
 	}
+	if(startAfterDoc) {
+		ref = ref.startAfter(startAfterDoc);
+	}
 		
 		ref.get()
 			.then((snapshot) => {
-				const productsArray = snapshot.docs.map((doc) => {
-					return {
-						...doc.data(),
-						documentID: doc.id,
-					};
-				});
-				resolve(productsArray);
+				const totalCount = snapshot.size
+				const data = [
+					...persistProducts,
+					...snapshot.docs.map((doc) => {
+						return {
+							...doc.data(),
+							documentID: doc.id,
+						};
+					})
+				];
+				resolve({data, queryDoc: snapshot.docs[totalCount - 1], isLastPage: totalCount < 1});
 			})
 			.catch((error) => {
 				reject(error);

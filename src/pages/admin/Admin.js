@@ -8,7 +8,7 @@ import {
 import FormInput from "./../../components/forms/formInput/FormInput";
 import FormSelect from "./../../components/forms/formSelect/FormSelect";
 import Button from "./../../components/forms/button/Button";
-// import LoadMore from "./../../components/LoadMore";
+import LoadMore from "./../../components/loadMore/LoadMore";
 // import CKEditor from "ckeditor4-react";
 import "./admin.scss";
 import Modal from "../../components/modal/Modal";
@@ -28,7 +28,7 @@ const Admin = () => {
 	const [productPrice, setProductPrice] = useState(0);
 	const [productDesc, setProductDesc] = useState("");
 
-	// const { data, queryDoc, isLastPage } = products;
+	const { data, queryDoc, isLastPage } = products;
 
 	useEffect(() => {
 		dispatch(fetchProductsStart());
@@ -66,12 +66,12 @@ const Admin = () => {
 	};
 
 	const handleLoadMore = () => {
-		// dispatch(
-		// 	fetchProductsStart({
-		// 		startAfterDoc: queryDoc,
-		// 		persistProducts: data,
-		// 	})
-		// );
+		dispatch(
+			fetchProductsStart({
+				startAfterDoc: queryDoc,
+				persistProducts: data,
+			})
+		);
 	};
 
 	const configLoadMore = {
@@ -159,7 +159,7 @@ const Admin = () => {
 									cellPadding="10"
 									cellSpacing="0">
 									<tbody>
-										{products.map((product, index) => {
+										{(Array.isArray(data)) && data.map((product, index) => {
 												const {
 													productName,
 													productThumbnail,
@@ -197,7 +197,7 @@ const Admin = () => {
 								<table border="0" cellPadding="10" cellSpacing="0">
 									<tbody>
 										<tr>
-											{/* <td>{!isLastPage && <LoadMore {...configLoadMore} />}</td> */}
+											<td>{!isLastPage && <LoadMore {...configLoadMore} />}</td>
 										</tr>
 									</tbody>
 								</table>
