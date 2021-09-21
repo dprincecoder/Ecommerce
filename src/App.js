@@ -21,6 +21,7 @@ import AdminToolBar from "./components/adminToolBar/AdminToolBar";
 import Search from "./pages/search/Search";
 import ProductDetails from "./pages/productDetails/ProductDetails";
 import Cart from "./pages/cart/Cart";
+import Payment from "./pages/payment/Payment";
 
 
 const App = (props) => {
@@ -57,6 +58,11 @@ const App = (props) => {
 					<Route exact path="/cart">
 						<MainLayouts>
 							<Cart />
+						</MainLayouts>
+					</Route>
+					<Route exact path="/payment">
+						<MainLayouts>
+							<Payment />
 						</MainLayouts>
 					</Route>
 					<Route exact path="/register">

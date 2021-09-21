@@ -1,4 +1,5 @@
-//helper function to implicitly return new cartitem but increase already existing cartitem
+//helper function to implicitly return new cartitem but increasing already existing cartitem quantity
+
 export const existingCartItem = ({ prevCartItems, nextCartItem }) => {
 	return prevCartItems.find(
 		(cartItem) => cartItem.documentID === nextCartItem.documentID
