@@ -15,7 +15,6 @@ const ProductsResults = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const { filterType } = useParams(); //get the parameters from the url and pass it to redux and formSelect
-	console.log(filterType);
 	const { products } = useSelector(mapState);
 	const { data, queryDoc, isLastPage } = products;
 

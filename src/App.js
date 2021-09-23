@@ -22,6 +22,7 @@ import Search from "./pages/search/Search";
 import ProductDetails from "./pages/productDetails/ProductDetails";
 import Cart from "./pages/cart/Cart";
 import Payment from "./pages/payment/Payment";
+import Order from "./pages/order/Order";
 
 
 const App = (props) => {
@@ -61,9 +62,11 @@ const App = (props) => {
 						</MainLayouts>
 					</Route>
 					<Route exact path="/payment">
+						<WithAuth>
 						<MainLayouts>
 							<Payment />
 						</MainLayouts>
+						</WithAuth>
 					</Route>
 					<Route exact path="/register">
 						<MainLayouts>
@@ -84,6 +87,13 @@ const App = (props) => {
 						<WithAuth>
 							<DashboardLayout>
 								<Dashboard />
+							</DashboardLayout>
+						</WithAuth>
+					</Route>
+					<Route exact path="/order/:orderID">
+						<WithAuth>
+							<DashboardLayout>
+								<Order/>
 							</DashboardLayout>
 						</WithAuth>
 					</Route>

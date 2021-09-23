@@ -8,6 +8,11 @@ export const existingCartItem = ({ prevCartItems, nextCartItem }) => {
 
 //helper function to check user cart items before adding new one
 export const handleAddToCart = ({ prevCartItems, nextCartItem }) => {
+	console.log(
+		"this is add new existingcartitem documentID",
+		prevCartItems.documentID
+	);
+	console.log("this is add new cartitem documentID", nextCartItem.documentID);
 	const quantityIncrements = 1;
 	const cartItemExists = existingCartItem({ prevCartItems, nextCartItem });
 	if (cartItemExists) {

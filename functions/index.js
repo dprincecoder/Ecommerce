@@ -26,6 +26,7 @@ app.post("/payments/create", (req, res) => {
 
 		res.send(paymentIntent.client_secret);
 	} catch (error) {
+		console.log(error);
 		res.status(500).json({ statusCode: 500, message: error.message });
 	}
 });
