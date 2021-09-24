@@ -9,6 +9,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
+import LoginIcon from "@mui/icons-material/Login";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
 //retrun currentUser object from state passed in userReducer
 const mapState = (state) => ({
@@ -38,7 +40,7 @@ const Header = (props) => {
 				<nav className={`mainMenu ${activeMenu ? "active" : ""}`}>
 					<ul>
 						<li>
-							<Link to="/search"> Search</Link>
+							<Link to="/search">Search</Link>
 						</li>
 						<li>
 							<Link to="/"> Home</Link>
@@ -55,37 +57,39 @@ const Header = (props) => {
 											Your Cart
 											<ShoppingCartIcon />
 										</Link>
-											({totalNumOfCartItems})
+										({totalNumOfCartItems})
 									</li>,
 									<li key="1">
 										<Link to="/dashboard">
 											{" "}
 											Dashboard
-											<AccountCircleIcon
-												
-											/>
+											<AccountCircleIcon />
 										</Link>
 									</li>,
 									<li key="2">
 										<span onClick={() => signOut()}>
-											<LockOpenIcon
-												
-											/>
+											<LockOpenIcon />
 											LOGOUT
 										</span>
 									</li>,
 							  ]
 							: [
-									<li key="0" className="hideOnMobile">
-										<Link to="/register"> Register</Link>
+									<li key="0" >
+										<Link to="/register">
+											<PersonAddIcon /> 
+											Register
+										</Link>
 									</li>,
 									<li key="1">
-										<Link to="/login"> Login</Link>
+										<Link to="/login">
+											<LoginIcon />	
+											Login
+										</Link>
 									</li>,
 							  ]}
 						<li className="mobileMenu">
 							<span onClick={() => setActiveMenu(!activeMenu)}>
-								<MenuIcon  />
+								<MenuIcon />
 							</span>
 						</li>
 					</ul>

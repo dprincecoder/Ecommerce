@@ -34,7 +34,7 @@ const handleAddToCart = product => {
 			<div className="hero">
 				<img src={productThumbnail} alt={productName} />
 			</div>
-			<ul>
+			<ul style={{listStyle: "none"}}>
 				<li>
 					<h1>{productName}</h1>
 				</li>
@@ -42,6 +42,7 @@ const handleAddToCart = product => {
 					<span>${productPrice}</span>
 				</li>
                 <li>
+					
                 
                 <div className="addToCart">
                     <Button {...configAddToCartBtn} onClick={() => handleAddToCart(product)}>Add to Cart</Button>

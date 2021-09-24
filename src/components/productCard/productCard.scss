@@ -1,39 +1,66 @@
 .productCard {
-  max-width: 80.0rem;
-  margin: 0 auto 10.0rem;
+ max-width: 80.0rem;
+  margin: 0 auto 2rem;
+  padding: 0 10px;
 
   .hero {
     display: block;
     width: 100%;
-    margin: 2rem auto;
 
     img {
       display: block;
-      width: 300px;
-      height: 300px;
+      width: 100%;
       margin: 0;
     }
   }
 
-  .productDetails {
+  .details {
+    display: block;
+    width: 100%;
+    padding: 1rem 0;
+    margin: 0 auto;
+
     ul, ul li {
       padding: 0;
       margin: 0;
-      list-style: none;
-      
     }
 
-     ul li {
-       list-style: none;
-       margin: 0 auto 1rem;
+    ul {
 
-       h1 {
-         margin: 0;
-       }
-     }
+      list-style: none;
+      li {
+        display: block;
+        width: 100%;
+        text-align: left;
+        margin: 0 0 .5rem;
+
+        a {
+          color: black;
+        }
+
+        .name {
+          font-size: 2.2rem;
+          line-height: 1.2;
+          font-weight: 400;
+        }
+
+        .price {
+          font-size: 1.6rem;
+          line-height: 1;
+          font-weight: 400;
+        }
+
+        .addToCart {
+          margin: 2rem 0 0 0;
+        }
+      }
+    }
+
   }
+}
 
-  .addToCart {
-    max-width: 20.0rem;
+@media only screen and (max-width: 980px) {
+  .product {
+    width: 100%;
   }
 }
