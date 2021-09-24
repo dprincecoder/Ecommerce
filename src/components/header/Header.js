@@ -52,9 +52,8 @@ const Header = (props) => {
 							? [
 									<li key="0">
 										<Link to="/cart">
-											<ShoppingCartIcon
-												
-											/>
+											Your Cart
+											<ShoppingCartIcon />
 										</Link>
 											({totalNumOfCartItems})
 									</li>,
