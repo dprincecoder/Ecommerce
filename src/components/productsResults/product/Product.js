@@ -8,6 +8,7 @@ import { addProduct } from "../../../redux/cart/cart.action";
 const Product = (product) => {
 	const dispatch = useDispatch();
 	const { documentID, productThumbnail, productName, productPrice} = product;
+	window.document.title = `Product`
 	// handle no product value error
 	if (
 		!documentID ||

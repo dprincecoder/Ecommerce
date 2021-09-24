@@ -1,0 +1,83 @@
+[debug] [2021-09-24T02:18:47.217Z] ----------------------------------------------------------------------
+[debug] [2021-09-24T02:18:47.223Z] Command:       /usr/bin/node /usr/bin/firebase deploy
+[debug] [2021-09-24T02:18:47.224Z] CLI Version:   9.16.6
+[debug] [2021-09-24T02:18:47.224Z] Platform:      linux
+[debug] [2021-09-24T02:18:47.224Z] Node Version:  v14.17.6
+[debug] [2021-09-24T02:18:47.225Z] Time:          Fri Sep 24 2021 03:18:47 GMT+0100 (West Africa Standard Time)
+[debug] [2021-09-24T02:18:47.226Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-09-24T02:18:47.383Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-09-24T02:18:47.384Z] > authorizing via signed-in user (azubuike070@gmail.com)
+[debug] [2021-09-24T02:18:47.384Z] [iam] checking project ecommerce-web-fc5d7 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2021-09-24T02:18:47.387Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/ecommerce-web-fc5d7:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2021-09-24T02:18:49.061Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 24 Sep 2021 02:18:48 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1095","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-09-24T02:18:49.065Z] >>> HTTP REQUEST POST https://iam.googleapis.com/v1/projects/ecommerce-web-fc5d7/serviceAccounts/ecommerce-web-fc5d7@appspot.gserviceaccount.com:testIamPermissions  
+ {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2021-09-24T02:18:50.647Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 24 Sep 2021 02:18:50 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'ecommerce-web-fc5d7'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script. 
+[debug] [2021-09-24T02:18:51.488Z] Validating nodejs source
+[debug] [2021-09-24T02:18:59.043Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log",
+    "lint": ""
+  },
+  "engines": {
+    "node": "14"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "firebase-admin": "^9.8.0",
+    "firebase-functions": "^3.14.1",
+    "stripe": "^8.176.0"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2021-09-24T02:18:59.044Z] Building nodejs source
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2021-09-24T02:18:59.048Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/ecommerce-web-fc5d7/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2021-09-24T02:18:59.049Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/ecommerce-web-fc5d7/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2021-09-24T02:18:59.050Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/ecommerce-web-fc5d7/services/cloudbuild.googleapis.com  
+ 
+[debug] [2021-09-24T02:19:00.914Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 24 Sep 2021 02:19:00 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-09-24T02:19:00.946Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 24 Sep 2021 02:19:00 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2021-09-24T02:19:00.955Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 24 Sep 2021 02:19:00 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2021-09-24T02:19:00.957Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/ecommerce-web-fc5d7/adminSdkConfig  
+ 
+[debug] [2021-09-24T02:19:01.656Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 24 Sep 2021 02:19:01 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-09-24T02:19:01.658Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/ecommerce-web-fc5d7/configs  
+ 
+[debug] [2021-09-24T02:19:02.526Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 24 Sep 2021 02:19:02 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-09-24T02:19:02.535Z] Analyzing nodejs backend spec
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged functions (24.96 KB) for uploading 
+[debug] [2021-09-24T02:19:04.579Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/ecommerce-web-fc5d7/locations/-/functions  
+ 
+[debug] [2021-09-24T02:19:05.706Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 24 Sep 2021 02:19:05 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-09-24T02:19:05.712Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/ecommerce-web-fc5d7/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2021-09-24T02:19:06.775Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 24 Sep 2021 02:19:06 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-09-24T02:19:06.780Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-9a342311-4c35-47a6-b2cd-b1d14561ca0d/a40379b7-eb21-406b-8750-5aad4178c6b4.zip?GoogleAccessId=service-77532771874@gcf-admin-robot.iam.gserviceaccount.com&Expires=1632451746&Signature=VOhmdSO2aish5RooPLrbBBQA3Ew5XG3rVEapgvMrNglNg3V3hsShLl7lBxEuIBTiyy9rAGoiPSj4rC4imqpQkVF2x3FiI6k%2FGqIS9Jzb3go9dsN%2BQUz5lrQ0pjrTGzrVugVQ9WCGu%2FUozC9vWxOljsB1Zpjplm9S9CR7gJ9LinWekCtphV0vzM8Dh1jYpaAUAohzQRFnB%2F1O%2FwmW1f1E5i3tPjb5uxW1hxl3DqO86cu6slRg%2FIuEYK439%2FAHDg1dxYQaTrV048TJKrx57qp%2FWoAN%2F8yXCvEFFOvXhEzVbL4ti8riguqH8qRSvWIKrK6JujA9MkXX8piissNaZbn63g%3D%3D  
+ <request body omitted>
