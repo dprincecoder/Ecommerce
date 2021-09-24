@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./header.scss";
 import logo from "./dpLogo1.png";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signOutUserStart } from "../../redux/User/user.actions";
 import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
+import MenuIcon from "@mui/icons-material/Menu";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
 
 //retrun currentUser object from state passed in userReducer
 const mapState = (state) => ({
@@ -14,6 +18,7 @@ const mapState = (state) => ({
 
 const Header = (props) => {
 	const dispatch = useDispatch();
+	const [activeMenu, setActiveMenu] = useState("");
 
 	const { currentUser, totalNumOfCartItems } = useSelector(mapState);
 
@@ -30,7 +35,7 @@ const Header = (props) => {
 					</Link>
 				</div>
 
-				<nav>
+				<nav className={`mainMenu ${activeMenu ? "active" : ""}`}>
 					<ul>
 						<li>
 							<Link to="/search"> Search</Link>
@@ -45,24 +50,45 @@ const Header = (props) => {
 					<ul>
 						{currentUser
 							? [
-								<li>
-									<Link to="/cart">Your cart ({totalNumOfCartItems})</Link>
-								</li>,
 									<li key="0">
-										<Link to="/dashboard"> Dashboard</Link>
+										<Link to="/cart">
+											<ShoppingCartIcon
+												
+											/>
+										</Link>
+											({totalNumOfCartItems})
 									</li>,
 									<li key="1">
-										<span onClick={() => signOut()}>LOGOUT</span>
+										<Link to="/dashboard">
+											{" "}
+											Dashboard
+											<AccountCircleIcon
+												
+											/>
+										</Link>
+									</li>,
+									<li key="2">
+										<span onClick={() => signOut()}>
+											<LockOpenIcon
+												
+											/>
+											LOGOUT
+										</span>
 									</li>,
 							  ]
 							: [
-									<li key="0">
+									<li key="0" className="hideOnMobile">
 										<Link to="/register"> Register</Link>
 									</li>,
 									<li key="1">
 										<Link to="/login"> Login</Link>
 									</li>,
 							  ]}
+						<li className="mobileMenu">
+							<span onClick={() => setActiveMenu(!activeMenu)}>
+								<MenuIcon  />
+							</span>
+						</li>
 					</ul>
 				</div>
 			</div>

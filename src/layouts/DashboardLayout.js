@@ -19,6 +19,8 @@ const DashboardLayout = (props) => {
 			<Header {...props} />
 			<div className="controlPanel">
 				<div className="sidebar">
+					<div className="sidebar">
+					</div>
 					<VerticalNav>
 						<ul>
 							<li>
@@ -31,6 +33,7 @@ const DashboardLayout = (props) => {
 							</li>
 						</ul>
 					</VerticalNav>
+						
 				</div>
 				<div className="content">{props.children}</div>
 			</div>

@@ -1,0 +1,7 @@
+Another E-commerce full-stack website using stripe payment, nodejs, react, redux, firebase, GraphQl  with great User-Experience and clean UI. 
+
+I am happy to build this project it gives a full functionally of an online store. error handling, setting up stripe payment gateway on the server side, configuring users, products and order actions using redux, paasing meta-data and more using GraphQl. 
+
+Thsi is a ready Production project.
+
+Live link: https://ecommerce-web-fc5d7.web.app/
