@@ -5,7 +5,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import {publishableKey} from '../../stripe/config'
 const Payment = () => {
 
-    const stripePromise = loadStripe(publishableKey)
+    const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY);
     return (
         <Elements stripe={stripePromise}>
             <PaymentDetails />

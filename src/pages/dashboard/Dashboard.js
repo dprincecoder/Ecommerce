@@ -13,12 +13,12 @@ const Dashboard = () => {
     const { currentUser, orderHistory} = useSelector(mapState);
 
     useEffect(() => {
-        dispatch(getUserOrderHistory(currentUser.id))
+        dispatch(getUserOrderHistory(currentUser.uid))
     }, [])
     return (
         <div >
             <h1>Order History </h1>
-            <OrderHistory ordesr={orderHistory} />
+            <OrderHistory orders={orderHistory} />
         </div>
     )
 }

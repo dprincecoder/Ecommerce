@@ -52,6 +52,7 @@ export function* onGetOrderDetailsStart() {
 export default function* ordersSagas() {
     yield all([
         call(onSaveOrderHistoryStart),
-        call(onGetUserOrderHistory)
+        call(onGetUserOrderHistory),
+        call(onGetOrderDetailsStart)
     ])
 }

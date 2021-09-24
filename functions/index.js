@@ -1,33 +1,30 @@
 const functions = require("firebase-functions");
 const express = require("express");
 const cors = require("cors");
-const stripe = require("stripe")(
-	"sk_test_51JbsfpEUQGIpi7rLbaZHzXRVG6sExkXFDeFUCgZU6AxhQcq4XtEcosO7hsCodaa8MskLTHjXcaccqFYA1iS2i3sS00OcsCrgj5"
-);
+require('dotenv').config();
+const stripe = require("stripe")(process.env.STRIPE_API_KEY);
 
 const app = express();
 
-app.use(
-	cors({
-		origin: true,
-	})
-);
+app.use(cors({
+	origin: true,
+}));
 
 app.use(express.json());
 
-app.post("/payments/create", (req, res) => {
+app.post("/payments/create", async (req, res) => {
 	try {
 		const { amount, shipping } = req.body;
-		const paymentIntent = stripe.paymentIntent.create({
-			shipping,
+		const paymentIntent = await stripe.paymentIntents.create({
 			amount,
+			shipping,
 			currency: "usd",
 		});
 
-		res.send(paymentIntent.client_secret);
+		res.status(200).send(paymentIntent.client_secret);
 	} catch (error) {
 		console.log(error);
-		res.status(500).json({ statusCode: 500, message: error.message });
+		res.status(error.status).json({ statusCode: error.code, message: error.message });
 	}
 });
 

@@ -2,7 +2,7 @@ import { auth } from '../../firebase';
 import { takeLatest, put, all, call } from 'redux-saga/effects';
 import { handleAddProduct, handleDeleteProducts, handleFetchProduct, handleFetchProducts } from './product.helpers';
 import productsTypes from './products.types';
-import { setProducts, fetchProductsStart, deleteProductStart, setProduct } from './products.actions';
+import { setProducts, fetchProductsStart, setProduct } from './products.actions';
 
 export function* addProduct({ payload }) {
     try {

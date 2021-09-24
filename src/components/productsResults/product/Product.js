@@ -41,7 +41,7 @@ const Product = (product) => {
 						</span>
 					</li>
 					<li>
-						<Link to={`/product/${documentID}`}>{productPrice}</Link>
+						<Link to={`/product/${documentID}`}>${productPrice}</Link>
 					</li>
 					<div className="addToCart">
 						<Button {...configAddToCartBtn} onClick={() => handleAddToCart(product)}>Add to cart</Button>

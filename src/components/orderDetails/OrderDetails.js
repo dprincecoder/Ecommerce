@@ -12,7 +12,7 @@ import { setOrderDetails } from "../../redux/orders/orders.action";
 
 const OrderDetails = ({ order }) => {
     const dispatch = useDispatch();
-    const orderItems = order && order.OrderItems;
+    const orderItems = order && order.orderItems;
     
     useEffect(() => {
         return () => {

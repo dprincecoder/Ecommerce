@@ -61,8 +61,10 @@ const PaymentDetails = () => {
 			[name]: value,
 		});
 	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		
 		const cardElement = elements.getElement("card");
 
 		if (
@@ -141,7 +143,7 @@ const PaymentDetails = () => {
 					<h1>Shipping Address</h1>
 					<FormInput
 						required
-						type="test"
+						type="text"
 						name="recipientName"
 						placeholder="Recipient Name"
 						value={recipientName}
@@ -149,14 +151,14 @@ const PaymentDetails = () => {
 					/>
 					<FormInput
 						required
-						type="test"
+						type="text"
 						name="line1"
 						placeholder="Line 1"
 						value={shippingAddress.line1}
 						handleChange={(evt) => handleShipping(evt)}
 					/>{" "}
 					<FormInput
-						type="test"
+						type="text"
 						name="line2"
 						placeholder="Line 2"
 						value={shippingAddress.line2}
@@ -164,7 +166,7 @@ const PaymentDetails = () => {
 					/>{" "}
 					<FormInput
 						required
-						type="test"
+						type="text"
 						name="city"
 						placeholder="City"
 						value={shippingAddress.city}
@@ -172,7 +174,7 @@ const PaymentDetails = () => {
 					/>{" "}
 					<FormInput
 						required
-						type="test"
+						type="text"
 						name="state"
 						placeholder="State"
 						value={shippingAddress.state}
@@ -180,7 +182,7 @@ const PaymentDetails = () => {
 					/>{" "}
 					<FormInput
 						required
-						type="test"
+						type="text"
 						name="postal_code"
 						placeholder="Postal Code"
 						value={shippingAddress.postal_code}
@@ -206,21 +208,21 @@ const PaymentDetails = () => {
 					<h1>Billing Address</h1>
 					<FormInput
 						required
-						type="test"
+						type="text"
 						name="nameOnCard"
 						placeholder="Name on Card"
 						value={nameOnCard}
 						handleChange={(e) => setNameOnCard(e.target.value)}
 					/>
 					<FormInput
-						type="test"
+						type="text"
 						name="line1"
 						placeholder="Line 1"
 						value={billingAddress.line1}
 						handleChange={(e) => handleBilling(e)}
 					/>{" "}
 					<FormInput
-						type="test"
+						type="text"
 						name="line2"
 						placeholder="Line 2"
 						value={billingAddress.line2}
@@ -228,7 +230,7 @@ const PaymentDetails = () => {
 					/>{" "}
 					<FormInput
 						required
-						type="test"
+						type="text"
 						name="city"
 						placeholder="City"
 						value={billingAddress.city}
@@ -236,7 +238,7 @@ const PaymentDetails = () => {
 					/>{" "}
 					<FormInput
 						required
-						type="test"
+						type="text"
 						name="state"
 						placeholder="State"
 						value={billingAddress.state}
@@ -244,7 +246,7 @@ const PaymentDetails = () => {
 					/>{" "}
 					<FormInput
 						required
-						type="test"
+						type="text"
 						name="postal_code"
 						placeholder="Postal Code"
 						value={billingAddress.postal_code}

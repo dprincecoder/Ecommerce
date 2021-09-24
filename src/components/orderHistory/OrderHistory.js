@@ -34,7 +34,7 @@ const styles = {
 const formatText = (columnName, columnValue) => {
 	switch (columnName) {
 		case "orderTotal":
-			return `£${columnValue}`;
+			return `$${columnValue}`;
 		case "orderCreatedDate":
 			return moment(columnValue.nano).format("DD/MM/YYYY");
 		default:

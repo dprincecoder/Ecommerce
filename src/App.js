@@ -24,7 +24,6 @@ import Cart from "./pages/cart/Cart";
 import Payment from "./pages/payment/Payment";
 import Order from "./pages/order/Order";
 
-
 const App = (props) => {
 	const dispatch = useDispatch();
 	
