@@ -13,13 +13,15 @@ import {CKEditor} from "ckeditor4-react";
 import "./admin.scss";
 import Modal from "../../components/modal/Modal";
 
-const mapState = ({ productsData }) => ({
+const mapState = ({ productsData, user }) => ({
 	products: productsData.products,
+	currentUser: user.currentUser,
 });
 
 const Admin = () => {
-	const { products } = useSelector(mapState);
+	const { products, currentUser } = useSelector(mapState);
 	const dispatch = useDispatch();
+    window.document.title = `Admin | ${currentUser.displayName}`;
 
 	const [hideModal, setHideModal] = useState(true);
 	const [productCategory, setProductCategory] = useState("mens");

@@ -53,7 +53,8 @@ export function* signOutUser() {
     try {
         yield auth.signOut();
         yield put(signOutUserSuccess())
-        yield localStorage.setItem("currentUser", JSON.stringify(null));
+        yield localStorage.setItem("currentUser", null);
+        yield window.location.reload();
     } catch (error) {
         console.log(error);
     }

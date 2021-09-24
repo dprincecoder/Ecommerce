@@ -25,6 +25,8 @@ import Payment from "./pages/payment/Payment";
 import Order from "./pages/order/Order";
 
 const App = (props) => {
+    window.document.title = "Dprincecoder's store";
+
 	const dispatch = useDispatch();
 	
 	useEffect(() => {

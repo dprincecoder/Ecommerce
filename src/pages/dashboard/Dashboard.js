@@ -11,6 +11,7 @@ const mapState = ({ user, ordersData }) => ({
 const Dashboard = () => {
     const dispatch = useDispatch();
     const { currentUser, orderHistory} = useSelector(mapState);
+    window.document.title = `${currentUser.displayName}`;
 
     useEffect(() => {
         dispatch(getUserOrderHistory(currentUser.uid))
